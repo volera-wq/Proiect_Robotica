@@ -1,46 +1,249 @@
 MODULE Module1
-    VAR num num1;
-    VAR num num2;
-    VAR num opt;
     PERS tooldata Efector:=[TRUE,[[0,0.033033672,184.3],[1,0,0,0]],[1.5,[0,0,90],[1,0,0,0],0.01,0.01,0.01]];
-    CONST robtarget T0_1:=[[19.546905251,50.498673106,41.130717679],[0.705400436,-0.000783768,0.708808148,-0.000787554],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
-    CONST robtarget T0_2:=[[51.036539581,29.778387043,41.025004577],[0.705400436,-0.000783768,0.708808148,-0.000787554],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
-    CONST robtarget T0_3:=[[91.733066975,57.74988216,40.766718096],[0.705400436,-0.000783768,0.708808148,-0.000787554],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
-    CONST robtarget T0_4:=[[46.188595861,75.181326856,40.947473953],[0.705400436,-0.000783768,0.708808148,-0.000787554],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    PERS wobjdata Workobject_1:=[FALSE,TRUE,"",[[276.123735704,-827.667234537,798.663444233],[0.923877305,0.000104396,-0.002651392,-0.382679612]],[[0,0,0],[1,0,0,0]]];
+    CONST robtarget home:=[[0.834488103,1170.696929347,259.084700159],[0.459642479,-0.331462463,0.801426912,0.191249396],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget up:=[[-51.633208179,640.397645531,178.164826806],[0.705400436,-0.000783768,0.708808148,-0.000787554],[-1,-2,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget pick:=[[-55.259706896,640.108764023,48.166657408],[0.705400436,-0.000783768,0.708808148,-0.000787554],[-1,-2,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget ref:=[[80.028130577,100.720123453,140.72904745],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+CONST robtarget T0_1:=[[9.546208479,100.497907125,40.730455604],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T0_2:=[[41.035842809,79.777621062,40.624742502],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T0_3:=[[81.732370203,107.749116179,40.366456021],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T0_4:=[[36.187899089,125.180560875,40.547211878],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T1_1:=[[23.778043214,86.267789909,40.693490346],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T1_2:=[[8.731217939,99.845917516,40.735832074],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T1_3:=[[80.636382929,100.842145042,40.387086501],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T2_1:=[[31.755950553,80.841717855,40.667100297],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T2_2:=[[6.08624864,99.311947147,40.74976553],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T2_3:=[[29.104981321,125.470636052,40.580701845],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T2_4:=[[71.480489244,86.448278602,40.463197375],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T2_5:=[[70.80349709,127.872183573,40.374407927],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T3_1:=[[18.710215411,82.591773594,40.726082499],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T3_2:=[[19.688090682,111.187772163,40.657823899],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T3_3:=[[45.419791871,103.366515913,40.55119576],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T3_4:=[[68.022529389,116.554241299,40.41296091],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T3_5:=[[73.635464218,90.505245507,40.443796548],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T4_1:=[[53.83069419,124.165374487,40.464442032],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T4_2:=[[53.075702975,80.033491537,40.566150282],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T4_3:=[[9.18787321,109.525888713,40.712120516],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T4_4:=[[83.035355052,110.99609425,40.352961057],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_1:=[[70.611499337,82.764297004,40.475571821],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_2:=[[86.448315421,103.968075054,40.352130656],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_3:=[[68.016529456,122.326227112,40.400163337],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_4:=[[40.69684671,123.155517631,40.529981942],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_5:=[[20.029086726,101.021793612,40.678771345],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_6:=[[37.315885986,84.371649598,40.632461157],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T9_7:=[[49.971739012,101.45747188,40.533500882],[0.002409616,-0.000002677,-0.99999648,0.001111093],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_1:=[[29.037119424,125.16526603,40.581707484],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_2:=[[13.20030334,103.96148798,40.705148627],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_3:=[[31.632089305,85.603335922,40.657115952],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_4:=[[58.951772051,84.774045403,40.527297366],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_5:=[[79.619532035,106.907769422,40.378507987],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_6:=[[62.332732775,123.557913436,40.424818171],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T6_7:=[[44.189479584,106.472149918,40.550223668],[0.002409616,0.000002677,-0.99999648,0.001111093],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T5_1:=[[17.47494015,121.068036328,40.646533482],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T5_2:=[[17.358941509,85.796124659,40.725473626],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T5_3:=[[38.084700828,86.30490145,40.62445961],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T5_4:=[[56.476487242,111.192166678,40.480519899],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T5_5:=[[73.027295052,86.419526967,40.455806449],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T7_1:=[[18.254137879,83.451889647,40.726368808],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T7_2:=[[16.933153208,115.512476931,40.661490103],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T7_3:=[[75.380474485,98.997889493,40.416514244],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_1:=[[78.856287686,108.091037322,40.379556329],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_2:=[[57.493535772,87.570316763,40.528110688],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_3:=[[41.951716246,106.624436154,40.560669208],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_4:=[[18.719986023,120.847649824,40.641022855],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_5:=[[-0.434791533,103.81389701,40.771187619],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_6:=[[20.170969186,87.149717488,40.708913585],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget T8_7:=[[60.168504694,124.215197637,40.433787102],[0.002409616,-0.000002677,-0.99999648,0.001111092],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+    CONST num DIGIT_Y_STEP := 50;
     
     PROC main()
-        TPReadNum num1, "Numar 1: ";
-        TPReadFK opt, "Operatia: ", "Add", "Minus", "Mult", "Div", stEmpty;
-        TPReadNum num2, "Numar2: ";
-        
-        
-        
-        
+        MARKER;
+        CalculatorC;
+        FINISH;
     ENDPROC
     
-    
-    FUNC num Calc(num n1, num n2, num op)
-        IF op = 1 THEN
-            RETURN n1 + n2;
-        ELSEIF op = 2 THEN
-            RETURN n1 - n2;
-        ELSEIF op = 3 THEN
-            RETURN n1 * n2;
+    PROC CalculatorC()
+        VAR num firstTerm;
+        VAR num secondTerm;
+        VAR num operation;
+        VAR num result;
+        
+        TPErase;
+        TPReadNum firstTerm, "Primul termen:";
+        TPReadFK operation, "Alege operatia", "+", "-", "*", "/", "";
+        TPReadNum secondTerm, "Al doilea termen:";
+        
+        IF operation = 1 THEN
+            result := firstTerm + secondTerm;
+        ELSEIF operation = 2 THEN
+            result := firstTerm - secondTerm;
+        ELSEIF operation = 3 THEN
+            result := firstTerm * secondTerm;
+        ELSEIF operation = 4 THEN
+            IF secondTerm = 0 THEN
+                TPWrite "Eroare: impartire la 0.";
+                RETURN;
+            ENDIF
+            result := firstTerm / secondTerm;
         ELSE
-            RETURN n1 - n2;
+            TPWrite "Operatie invalida.";
+            RETURN;
         ENDIF
-    ENDFUNC
-    PROC Path_10()
-        MoveL T0_1,v200,fine,Efector\WObj:=Workobject_1;
-        MoveL T0_2,v200,fine,Efector\WObj:=Workobject_1;
-        MoveL T0_3,v200,fine,Efector\WObj:=Workobject_1;
-        MoveL T0_4,v200,fine,Efector\WObj:=Workobject_1;
-        MoveL T0_1,v200,fine,Efector\WObj:=Workobject_1;
+        
+        result := Trunc(result);
+        
+        IF result < 0 THEN
+            TPWrite "Rezultat negativ. Desenez valoarea absoluta.";
+            result := -result;
+        ENDIF
+        
+        DrawNumber result;
     ENDPROC
     
+    PROC DrawNumber(num value)
+        VAR num n;
+        VAR num divisor;
+        VAR num digit;
+        VAR num yOffset;
+        
+        n := Trunc(value);
+        
+        IF n = 0 THEN
+            ZERO 0;
+            RETURN;
+        ENDIF
+        
+        divisor := 1;
+        WHILE n >= divisor * 10 DO
+            divisor := divisor * 10;
+        ENDWHILE
+        
+        yOffset := 0;
+        WHILE divisor >= 1 DO
+            digit := Trunc(n / divisor);
+            DrawDigit digit, yOffset;
+            n := n - digit * divisor;
+            divisor := divisor / 10;
+            yOffset := yOffset + DIGIT_Y_STEP;
+        ENDWHILE
+    ENDPROC
     
+    PROC DrawDigit(num digit, num yOffset)
+        IF digit = 0 THEN
+            ZERO yOffset;
+        ELSEIF digit = 1 THEN
+            ONE yOffset;
+        ELSEIF digit = 2 THEN
+            TWO yOffset;
+        ELSEIF digit = 3 THEN
+            THREE yOffset;
+        ELSEIF digit = 4 THEN
+            FOUR yOffset;
+        ELSEIF digit = 5 THEN
+            FIVE yOffset;
+        ELSEIF digit = 6 THEN
+            SIX yOffset;
+        ELSEIF digit = 7 THEN
+            SEVEN yOffset;
+        ELSEIF digit = 8 THEN
+            EIGHT yOffset;
+        ELSEIF digit = 9 THEN
+            NINE yOffset;
+        ENDIF
+    ENDPROC
     
-    
-    
+    PROC ZERO(num yOffset)
+        MoveL Offs(T0_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T0_2,0,yOffset,0),Offs(T0_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T0_4,0,yOffset,0),Offs(T0_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC MARKER()
+        Set DO10_9;
+        MoveL home,v200,fine,Efector\WObj:=Workobject_1;
+        MoveL up,v200,fine,Efector\WObj:=Workobject_1;
+        MoveL pick,v200,fine,Efector\WObj:=Workobject_1;
+        Reset DO10_9;
+        WaitTime 2;
+        MoveL up,v200,fine,Efector\WObj:=Workobject_1;
+        WaitTime 2;
+        MoveL ref,v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC FINISH()
+        MoveL ref,v200,fine,Efector\WObj:=Workobject_1;
+        MoveL up,v200,fine,Efector\WObj:=Workobject_1;
+        MoveL pick,v200,fine,Efector\WObj:=Workobject_1;
+        WaitTime 2;
+        Set DO10_9;
+        WaitTime 2;
+        MoveL up,v200,fine,Efector\WObj:=Workobject_1;
+        MoveL home,v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC ONE(num yOffset)
+        MoveL Offs(T1_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T1_2,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T1_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC TWO(num yOffset)
+        MoveL Offs(T2_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T2_2,0,yOffset,0),Offs(T2_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T2_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T2_5,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC THREE(num yOffset)
+        MoveL Offs(T3_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T3_2,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T3_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T3_4,0,yOffset,0),Offs(T3_5,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC FOUR(num yOffset)
+        MoveL Offs(T4_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T4_2,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T4_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T4_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC NINE(num yOffset)
+        MoveL Offs(T9_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T9_2,0,yOffset,0),Offs(T9_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T9_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T9_5,0,yOffset,0),Offs(T9_6,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T9_7,0,yOffset,0),Offs(T9_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC SIX(num yOffset)
+        MoveL Offs(T6_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T6_2,0,yOffset,0),Offs(T6_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T6_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T6_5,0,yOffset,0),Offs(T6_6,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T6_7,0,yOffset,0),Offs(T6_4,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC FIVE(num yOffset)
+        MoveL Offs(T5_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T5_2,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T5_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T5_4,0,yOffset,0),Offs(T5_5,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC SEVEN(num yOffset)
+        MoveL Offs(T7_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T7_2,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(T7_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
+    PROC EIGHT(num yOffset)
+        MoveL Offs(T8_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T8_2,0,yOffset,0),Offs(T8_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T8_4,0,yOffset,0),Offs(T8_5,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T8_6,0,yOffset,0),Offs(T8_3,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveC Offs(T8_7,0,yOffset,0),Offs(T8_1,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+        MoveL Offs(ref,0,yOffset,0),v200,fine,Efector\WObj:=Workobject_1;
+    ENDPROC
 
 ENDMODULE
